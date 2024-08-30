@@ -1,2 +1,1 @@
-image: gitpod/workspace-base
-
+image: registry.gitlab.com/codelab-kubernetes/workshop:gitpod-workspace
