@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shop-database
+data:
+  POSTGRES_PASSWORD: postgres
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shop-database
+  labels:
+    app: shop-database
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  clusterIP: None
+  selector:
+    app: shop-database
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: shop-database
+spec:
+  selector:
+    matchLabels:
+      app: shop-database
+  serviceName: "shop-database"
+  template:
+    metadata:
+      labels:
+        app: shop-database
+    spec:
+      containers:
+        - name: postgres
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:1.0.0
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: shop-database
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
