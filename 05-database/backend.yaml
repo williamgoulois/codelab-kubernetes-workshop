@@ -14,13 +14,21 @@ spec:
     spec:
       containers:
         - name: shop-backend
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:1.1.0
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:1.2.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
-#          envFrom:
-#            - secretRef:
-#                name: shop-database
+          env:
+            - name: SPRING_R2DBC_URL
+              value: r2dbc:postgresql://shop-database:5432/shop
+            - name: SPRING_R2DBC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: shop-database
+                  key: POSTGRES_PASSWORD
+          envFrom:
+            - configMapRef:
+                name: shop-backend
           resources:
             requests:
               memory: "32Mi"

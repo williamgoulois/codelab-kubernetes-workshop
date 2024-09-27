@@ -1,8 +1,15 @@
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
   name: shop-database
 data:
+  POSTGRES_DB: shop
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shop-database
+stringData:
   POSTGRES_PASSWORD: postgres
 ---
 apiVersion: v1
@@ -46,11 +53,14 @@ spec:
           ports:
             - containerPort: 5432
           envFrom:
+            - configMapRef:
+                name: shop-database
             - secretRef:
                 name: shop-database
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
+              subPath: postgres
   volumeClaimTemplates:
     - metadata:
         name: postgres-data

@@ -27,9 +27,10 @@ kind: Ingress
 metadata:
   name: shop
 spec:
-  ingressClassName: ingress-nginx
+  ingressClassName: nginx
   rules:
-    - http:
+    - host: devshop.codelab.dwidwi.tech
+      http:
         paths:
           - path: /
             pathType: Prefix
