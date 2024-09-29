@@ -7,6 +7,3 @@ RUN sudo mv ./kubectl /usr/local/bin/kubectl
 
 # Install helm
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-# Install vscode extension
-RUN code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools

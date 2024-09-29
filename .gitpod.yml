@@ -1,1 +1,3 @@
 image: registry.gitlab.com/codelab-kubernetes/workshop:gitpod-workspace
+tasks:
+  - before: code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
