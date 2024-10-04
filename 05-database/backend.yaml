@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: shop-backend
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:1.2.0
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:1.3.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -26,9 +26,6 @@ spec:
                 secretKeyRef:
                   name: shop-database
                   key: POSTGRES_PASSWORD
-          envFrom:
-            - configMapRef:
-                name: shop-backend
           resources:
             requests:
               memory: "32Mi"

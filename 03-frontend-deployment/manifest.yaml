@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: shop-frontend
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:1.0.0
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:1.1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

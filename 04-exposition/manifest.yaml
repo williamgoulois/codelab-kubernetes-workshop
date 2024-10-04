@@ -29,7 +29,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: devshop.codelab.dwidwi.tech
+    - host: <student-X>.devshop.codelab.dwidwi.tech
       http:
         paths:
           - path: /

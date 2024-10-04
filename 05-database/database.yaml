@@ -3,14 +3,14 @@ kind: ConfigMap
 metadata:
   name: shop-database
 data:
-  POSTGRES_DB: shop
+  POSTGRES_DB: "shop"
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: shop-database
 stringData:
-  POSTGRES_PASSWORD: postgres
+  POSTGRES_PASSWORD: "postgres"
 ---
 apiVersion: v1
 kind: Service
@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:1.0.0
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:1.1.0
           resources:
             requests:
               memory: "64Mi"
