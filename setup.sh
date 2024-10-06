@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "🛠️ Setting up the environment..."
+echo "🛠️  Setting up the environment..."
 if [ -z "${PACKAGE_REGISTRY_PASSWORD}" ]; then
   echo "🙏 Please set the PACKAGE_REGISTRY_PASSWORD environment variable with the given value."
   exit 1
