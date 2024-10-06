@@ -14,6 +14,14 @@ Pour démarrer votre environnement prêt à l'emploi : [![Environnement Gitpod](
 
 ## Configuration 🔧
 
+Configurez la variable d'environnement `PACKAGE_REGISTRY_PASSWORD` avec la valeur fournie.
+```shell
+export PACKAGE_REGISTRY_PASSWORD=<value>
+```
+
 Lancez le script `setup.sh` pour finaliser la configuration de votre environnement.
+```shell
+./setup.sh
+```
 
 ## Prêt à commencer ? C'est parti [➡️](00-intro/README.md)
