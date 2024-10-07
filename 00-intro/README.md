@@ -57,4 +57,4 @@ Se connecter sur le cluster Kubernetes depuis [![Environnement Gitpod](../assets
 kubectx student-<numéro>
 ```
 
-## Le premier Pod, c'est par là [➡️](../01-backend-pod/README.md)
+## Le premier `Pod`, c'est par là [➡️](../01-backend-pod/README.md)
