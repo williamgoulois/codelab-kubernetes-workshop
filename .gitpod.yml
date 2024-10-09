@@ -2,5 +2,3 @@ image: registry.gitlab.com/codelab-kubernetes/workshop:gitpod-workspace
 vscode:
   extensions:
     - ms-kubernetes-tools.vscode-kubernetes-tools
-tasks:
-  - init: chmod +x /workspace/workshop/setup.sh
