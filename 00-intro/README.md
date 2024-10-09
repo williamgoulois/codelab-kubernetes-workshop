@@ -8,17 +8,17 @@ J'ai développé mon application et préparé des images de conteneur pour les d
 
 Faut que je déploie ça vite et bien, on m'a dit de faire ça sur kubernetes, mais je n'y connais rien !
 
-On m'a filé ce schéma, mais c'est de la magie noire pour moi...
+On m'a filé ce schéma, mais c'est de la magie noire 🔮 pour moi...
 
 ![Schéma de l'architecture de l'application](../assets/schema-kube-codelab-base.png)
 
-Commençons par découper ça !
+✂ Commençons par découper ça ✂
 
 ![Schéma de l'architecture de l'application](../assets/schema-kube-codelab-base-details.png)
 
 Ok j'y vois déjà un peu plus clair, mais il va falloir y aller petit à petit...
 
-## Cheat sheet
+## Cheat sheet 📋
 
 **Selection du contexte Kubernetes**
 ```shell 
