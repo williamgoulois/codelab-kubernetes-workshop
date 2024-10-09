@@ -40,7 +40,7 @@ La section `spec` permet de définir les conteneurs à exécuter dans le `Pod`. 
   * `image` : image à exécuter
   * `resources` : ressources allouées au conteneur 
     * section `limits` (obligatoire) : Permet la définition de la quantité maximale de ressources que Kubernetes pourra allouer au conteneur
-    * section `requests` (fortement recommandé): Permet la définition de la quantité minimale de ressources que Kubernetes doit allouer. Ces valeurs permettent à Kubernetes de décider du noeud sur lequel placé le pod.
+    * section `requests` (fortement recommandé) : Permet la définition de la quantité nominale de ressources que le conteneur utilise. Ces valeurs permettent à Kubernetes de décider du noeud sur lequel placer le pod.
   * `ports` : ports exposés par le conteneur
 
 ## Cheat Sheet
