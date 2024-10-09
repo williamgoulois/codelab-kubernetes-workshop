@@ -8,7 +8,7 @@ On va voir comment exposer les composants en interne et en externe du cluster. a
 
 ![Schéma de l'etape 3.1](../assets/schema-kube-codelab-etape-3.1.png)
 
-## Concept
+## Concepts
 
 Un `Service` est un objet Kubernetes qui permet d'exposer un ensemble de `Pods` en interne du cluster.  
 Il se base sur un selecteur de labels pour cibler l'ensemble de pods à exposer.  
@@ -33,6 +33,8 @@ La section `spec` permet de définir les caractéristiques du `Service` :
   * `type` : type d'exposition du service (`ClusterIP`, `NodePort`, `LoadBalancer` ou ExternalName`, par défaut `ClusterIP`).  
   * `selector` : permet de définir quels `Pods` sont gérés par le `Service`.  
   * `ports` : permet de définir les ports exposés par le `Service` et le port-forwarding entre les `Pods` et le `Service`.  
+    * `port` : port du `Service`.  
+    * `targetPort` : port du `Pod`.    
 
 Un `Ingress` est un objet Kubernetes qui permet d'exposer un `Service` en externe du cluster.  
 Il permet de choisir quelles URL sont exposées et de gérer le routage des requêtes vers les `Services` correspondants à l'instar d'un reverse proxy ou d'une VIP.  
@@ -60,9 +62,9 @@ La section `metadata` permet de définir le nom de l'`Ingress`.
 La section `spec` permet de définir les caractéristiques de l'`Ingress` :  
   * `rules` : permet de définir une liste de règles de routage, une règle par `host`.  
     * `host` : permet de définir le nom de domaine à exposer.  
-      * `http.paths.path` : permet de définir le chemin d'accès concerné.  
-      * `http.paths.pathType` : permet de définir le type de chemin (`Prefix`, `Exact` ou `Implementation Specific`).    
-      * `http.paths.backend` : permet de définir le `Service` cible du routage. (nom et port)  
+      * `http.paths[].path` : permet de définir le chemin d'accès concerné.  
+      * `http.paths[].pathType` : permet de définir le type de chemin (`Prefix`, `Exact` ou `Implementation Specific`).    
+      * `http.paths[].backend` : permet de définir le `Service` cible du routage. (nom et port)  
 
 ## Cheat Sheet
 
@@ -108,7 +110,7 @@ kubectl apply -f exposition.yaml
 
 5) Vérifier le statut des `Services`
 ```shell
-kubectl get services
+kubectl get svc
 ```
 
 6) Vérifier le statut de l'`Ingress`
