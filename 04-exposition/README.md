@@ -63,7 +63,7 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
   * `rules` : permet de définir une liste de règles de routage, une règle par `host`.  
     * `host` : permet de définir le nom de domaine à exposer.  
       * `http.paths[].path` : permet de définir le chemin d'accès concerné.  
-      * `http.paths[].pathType` : permet de définir le type de chemin (`Prefix`, `Exact` ou `Implementation Specific`).    
+      * `http.paths[].pathType` : permet de définir le type de chemin (`Prefix`, `Exact` ou `ImplementationSpecific`).    
       * `http.paths[].backend` : permet de définir le `Service` cible du routage. (nom et port)  
 
 ## Cheat Sheet
