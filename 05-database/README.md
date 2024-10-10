@@ -163,7 +163,7 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
     * exposant le port `5432`  
     * injectant toute la `ConfigMap` `shop-database` en tant que variables d'environnement
     * injectant tout le `Secret` `shop-database` en tant que variables d'environnement
-    * déclarant un `PersistentVolumeClaim` nommé `postgres-data` de 1Gi en `ReadWriteOnce`  
+    * déclarant un `PersistentVolumeClaim` nommé `postgres-data` de `1Gi` en `ReadWriteOnce`  
     * déclarant un `volumeMount` nommé `postgres-data` monté dans `/var/lib/postgresql/data` en specifiant le `subPath: postgres`  
 
 2) Dans le fichier `database.yaml`, créez une `ConfigMap` :  
