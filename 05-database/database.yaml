@@ -34,14 +34,14 @@ spec:
   selector:
     matchLabels:
       app: shop-database
-  serviceName: "shop-database"
+  serviceName: shop-database
   template:
     metadata:
       labels:
         app: shop-database
     spec:
       containers:
-        - name: postgres
+        - name: shop-database
           image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:1.1.0
           resources:
             requests:
