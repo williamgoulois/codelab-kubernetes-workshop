@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.names.backend | default "shop-backend" }}
+  labels:
+    app: {{ .Values.labels.backend | default "shop-backend" }}
+spec:
+  replicas: {{ .Values.replicas.backend }}
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.backend | default "shop-backend" }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.backend | default "shop-backend" }}
+    spec:
+      containers:
+        - name: shop-backend
+          image: {{ .Values.images.backend }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.ports.backend }}
+          env:
+            - name: SPRING_R2DBC_URL
+              value: r2dbc:postgresql://shop-database:5432/shop
+            - name: SPRING_R2DBC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: shop-database
+                  key: POSTGRES_PASSWORD
+          resources:
+            {{- toYaml .Values.resources.backend | nindent 12 }}

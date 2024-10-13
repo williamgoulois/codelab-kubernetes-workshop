@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.names.frontend | default "shop-frontend" }}
+  labels:
+    app: {{ .Values.labels.frontend | default "shop-frontend" }}
+spec:
+  replicas: {{ .Values.replicas.frontend }}
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.frontend | default "shop-frontend" }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.frontend | default "shop-frontend" }}
+    spec:
+      containers:
+        - name: shop-frontend
+          image: {{ .Values.images.frontend }}
+          ports:
+            - containerPort: {{ .Values.ports.frontend }}
+          resources:
+            {{- toYaml .Values.resources.frontend | nindent 12 }}

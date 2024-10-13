@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.names.frontend | default "shop-frontend" }}
+  labels:
+    app: {{ .Values.labels.frontend | default "shop-frontend" }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.labels.frontend | default "shop-frontend" }}
+  ports:
+    - port: {{ .Values.ports.frontend }}
+      targetPort: {{ .Values.ports.frontend }}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.names.database | default "shop-database" }}
+  labels:
+    app: {{ .Values.labels.database | default "shop-database" }}
+spec:
+  ports:
+    - port: {{ .Values.ports.database }}
+      targetPort: {{ .Values.ports.database }}
+  clusterIP: None
+  selector:
+    app: {{ .Values.labels.database | default "shop-database" }}

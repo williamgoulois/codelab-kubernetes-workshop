@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.names.database | default "shop-database" }}
+  labels:
+    app: {{ .Values.labels.database | default "shop-database" }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.database | default "shop-database" }}
+  serviceName: {{ .Values.names.database | default "shop-database" }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.database | default "shop-database" }}
+    spec:
+      containers:
+        - name: shop-database
+          image: {{ .Values.images.database }}
+          ports:
+            - containerPort: {{ .Values.ports.database }}
+          resources:
+            {{- toYaml .Values.resources.database | nindent 12 }}
+          envFrom:
+            - configMapRef:
+                name: shop-database
+            - secretRef:
+                name: shop-database
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .Values.storage.database }}
