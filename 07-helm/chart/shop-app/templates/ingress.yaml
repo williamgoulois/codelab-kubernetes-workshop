@@ -3,22 +3,21 @@ kind: Ingress
 metadata:
   name: shop
 spec:
-  ingressClassName: nginx
   rules:
-    - host: {{ .Values.hostnames.ingress }}
+    - host: {{ .Values.ingress.hostname }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.names.frontend | default "shop-frontend" }}
+                name: {{ .Values.frontend.name | default "shop-frontend" }}
                 port:
-                  number: {{ .Values.ports.frontend }}
+                  number: {{ .Values.frontend.port }}
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.names.backend | default "shop-backend" }}
+                name: {{ .Values.backend.name | default "shop-backend" }}
                 port:
-                  number: {{ .Values.ports.backend }}
+                  number: {{ .Values.backend.port }}

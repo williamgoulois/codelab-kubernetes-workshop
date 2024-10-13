@@ -1,25 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.names.backend | default "shop-backend" }}
+  name: {{ .Values.backend.name | default "shop-backend" }}
   labels:
-    app: {{ .Values.labels.backend | default "shop-backend" }}
+    {{- toYaml .Values.backend.matchLabel | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicas.backend }}
+  replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.labels.backend | default "shop-backend" }}
+      {{- toYaml .Values.backend.matchLabel | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ .Values.labels.backend | default "shop-backend" }}
+        {{- toYaml .Values.backend.matchLabel | nindent 8 }}
     spec:
       containers:
-        - name: shop-backend
-          image: {{ .Values.images.backend }}
-          imagePullPolicy: IfNotPresent
+        - name: {{ .Values.backend.name | default "shop-backend" }}
+          image: {{ .Values.backend.image }}
           ports:
-            - containerPort: {{ .Values.ports.backend }}
+            - containerPort: {{ .Values.backend.port }}
           env:
             - name: SPRING_R2DBC_URL
               value: r2dbc:postgresql://shop-database:5432/shop
@@ -29,4 +28,4 @@ spec:
                   name: shop-database
                   key: POSTGRES_PASSWORD
           resources:
-            {{- toYaml .Values.resources.backend | nindent 12 }}
+            {{- toYaml .Values.backend.resources | nindent 12 }}

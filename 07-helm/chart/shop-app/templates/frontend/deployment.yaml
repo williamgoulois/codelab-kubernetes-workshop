@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.names.frontend | default "shop-frontend" }}
+  name: {{ .Values.frontend.name | default "shop-frontend" }}
   labels:
-    app: {{ .Values.labels.frontend | default "shop-frontend" }}
+    {{- toYaml .Values.frontend.matchLabel | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicas.frontend }}
+  replicas: {{ .Values.frontend.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.labels.frontend | default "shop-frontend" }}
+      {{- toYaml .Values.frontend.matchLabel | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ .Values.labels.frontend | default "shop-frontend" }}
+        {{- toYaml .Values.frontend.matchLabel | nindent 8 }}
     spec:
       containers:
-        - name: shop-frontend
-          image: {{ .Values.images.frontend }}
+        - name: {{ .Values.frontend.name | default "shop-frontend" }}
+          image: {{ .Values.frontend.image }}
           ports:
-            - containerPort: {{ .Values.ports.frontend }}
+            - containerPort: {{ .Values.frontend.port }}
           resources:
-            {{- toYaml .Values.resources.frontend | nindent 12 }}
+            {{- toYaml .Values.frontend.resources | nindent 12 }}

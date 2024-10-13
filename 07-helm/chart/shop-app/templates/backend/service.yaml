@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.names.backend | default "shop-backend" }}
+  name: {{ .Values.backend.name | default "shop-backend" }}
   labels:
-    app: {{ .Values.labels.backend | default "shop-backend" }}
+    {{- toYaml .Values.backend.matchLabel | nindent 4 }}
 spec:
   type: ClusterIP
   selector:
-    app: {{ .Values.labels.backend | default "shop-backend" }}
+    {{- toYaml .Values.backend.matchLabel | nindent 4 }}
   ports:
-    - port: {{ .Values.ports.backend }}
-      targetPort: {{ .Values.ports.backend }}
+    - port: {{ .Values.backend.port }}
+      targetPort: {{ .Values.backend.port }}
