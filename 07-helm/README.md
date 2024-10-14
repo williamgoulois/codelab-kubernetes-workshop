@@ -88,43 +88,53 @@ helm list
 
 2) Modifier le fichier `07-helm/chart/shop-app/values.yaml` pour changer le hostname de l'ingress
 
-3) Déployer le chart `shop-app` local avec Helm
+3) Supprimer les anciennes ressources créées
+```shell
+kubectl delete -f 03-frontend-deployment/deploy-frontend.yaml
+kubectl delete -f 04-exposition/exposition.yaml
+kubectl delete -f 05-database/database.yaml
+kubectl delete -f 05-database/deploy-backend.yaml
+kubectl delete -f 06-backend-autoscaler/hpa-backend.yaml
+kubectl delete pvc --all
+```
+
+4) Déployer le chart `shop-app` local avec Helm
 ```shell
 cd 07-helm/chart/shop-app
 helm upgrade --install shop-app-release-local .
 ```
 
-4) Vérifier que la `release` a bien été créé
+5) Vérifier que la `release` a bien été créé
 ```shell
 helm list
 ```
 
-5) Vérifier que le déploiement a bien été effectué
+6) Vérifier que le déploiement a bien été effectué
 ```shell
-kubectl get all --all
+kubectl get all
 ```
 
-6) Supprimer la `release` Helm
+7) Supprimer la `release` Helm
 ```shell
 helm delete shop-app-release-local
 ```
 
-7) Créer un fichier `my-values.yaml` pour personnaliser les valeurs du `Chart` (exemple changement du nom d'un composant)
+8) Créer un fichier `my-values.yaml` pour personnaliser les valeurs du `Chart` (exemple changement du nom d'un composant)
 
-8) Installer la `release` Helm depuis le repository distant avec des valeurs personnalisées (changement de nom par exemple)
+9) Installer la `release` Helm depuis le repository distant avec des valeurs personnalisées (changement de nom par exemple)
 ```shell
 helm repo add workshop https://gitlab.com/api/v4/projects/61280261/packages/helm/stable
 helm upgrade --install --values my-values.yaml shop-app-release-dist workshop/shop-app
 ```
 
-9) Vérifier que la `release` a bien été créé
+10) Vérifier que la `release` a bien été créé
 ```shell
 helm list
 ```
 
-10) Vérifier que le déploiement a bien été effectué
+11) Vérifier que le déploiement a bien été effectué
 ```shell
-kubectl get all --all
+kubectl get all
 ```
 
 ## Nous voilà prêts pour l'échéance ! ✨

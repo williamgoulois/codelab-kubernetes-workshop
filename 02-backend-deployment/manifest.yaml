@@ -15,7 +15,6 @@ spec:
       containers:
         - name: shop-backend
           image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:no-database
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           resources:
@@ -25,4 +24,3 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "100m"
-      restartPolicy: Always

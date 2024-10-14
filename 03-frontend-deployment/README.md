@@ -25,7 +25,7 @@ Déployons notre frontend avec un second `Deployment` !
 
 2) Déployer le `Deployment`
 ```shell
-kubectl apply -f deploy-backend.yaml
+kubectl apply -f deploy-frontend.yaml
 ```
 
 3) Vérifier le statut du `Deployment`
