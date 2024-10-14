@@ -213,6 +213,6 @@ kubectl get pods
 kubectl logs deploy/shop-backend
 ```
 
-11) Testez l'accès à l'application depuis un navigateur : `http://<student-X>.devshop.codelab.dwidwi.tech/` (remplacer `<student-X>` par votre identifiant de participant)  
+11) Testez l'accès à l'application depuis un navigateur : `https://<student-X>.devshop.codelab.dwidwi.tech/` (remplacer `<student-X>` par votre identifiant de participant)  
 
 ## C'est bon, on a notre application complète, mais est-ce que ça tiendra la charge ? [➡️](../06-backend-autoscaler/README.md)

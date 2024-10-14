@@ -44,7 +44,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: appname
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - appname.example.com
+      secretName: tls
   rules:
     - host: appname.example.com
       http:
@@ -60,6 +68,10 @@ spec:
 
 La section `metadata` permet de définir le nom de l'`Ingress`.  
 La section `spec` permet de définir les caractéristiques de l'`Ingress` :  
+  * `ingressClassName` : permet de définir la classe de l'`Ingress` (par défaut `nginx`).  
+  * `tls` : permet de définir les configurations TLS de l'`Ingress`.  
+    * `hosts` : permet de définir les noms de domaine à exposer.  
+    * `secretName` : permet de définir le nom du `Secret` contenant les certificats TLS. Ce `Secret` est généré par le `cert-manager` grâce aux `annotations` présentes
   * `rules` : permet de définir une liste de règles de routage, une règle par `host`.  
     * `host` : permet de définir le nom de domaine à exposer.  
       * `http.paths[].path` : permet de définir le chemin d'accès concerné.  
@@ -99,6 +111,7 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
 3) Dans le même fichier, créez un `Ingress` :  
     * nommé `shop-ingress`  
     * utilisant le `host` : <student-X>.devshop.codelab.dwidwi.tech (remplacer `<student-X>` par votre identifiant de participant)
+    * exposant en `https`
     * exposant le port `80` du `Service` nommé `shop-frontend` sur le chemin `/`  
     * exposant le port `8080` du `Service` nommé `shop-backend` sur le chemin `/api`  
 
@@ -118,6 +131,6 @@ kubectl get svc
 kubectl get ingress
 ```
 
-7) Tester l'accès à l'application depuis un navigateur : `http://<student-X>.devshop.codelab.dwidwi.tech/` (remplacer `<student-X>` par votre identifiant de participant)  
+7) Tester l'accès à l'application depuis un navigateur : `https://<student-X>.devshop.codelab.dwidwi.tech/` (remplacer `<student-X>` par votre identifiant de participant)  
 
 ## Les données sont bien statiques, on passe à la base de données ? [➡️](../05-database/README.md)

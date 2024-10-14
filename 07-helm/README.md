@@ -93,7 +93,7 @@ helm list
 kubectl delete -f 03-frontend-deployment/deploy-frontend.yaml
 kubectl delete -f 04-exposition/exposition.yaml
 kubectl delete -f 05-database/database.yaml
-kubectl delete -f 05-database/deploy-backend.yaml
+kubectl delete -f 05-database/backend.yaml
 kubectl delete -f 06-backend-autoscaler/hpa-backend.yaml
 kubectl delete pvc --all
 ```
