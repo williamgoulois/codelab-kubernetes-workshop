@@ -27,7 +27,6 @@ kind: Ingress
 metadata:
   name: shop
 spec:
-  ingressClassName: nginx
   rules:
     - host: <student-X>.devshop.codelab.dwidwi.tech
       http:

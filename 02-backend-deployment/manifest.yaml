@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: shop-backend
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:1.1.0
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:no-database
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
