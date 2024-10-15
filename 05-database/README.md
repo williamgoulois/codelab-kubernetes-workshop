@@ -151,7 +151,15 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
 
 ## Pratique
 
-1) Créez un fichier `database.yaml` et créez un `StatefulSet` :  
+1) Créer un fichier `database.yaml`, créez une `ConfigMap` :  
+    * nommée `shop-database`  
+    * contenant la clé `POSTGRES_DB` avec la valeur `shop`  
+
+2) Dans le fichier `database.yaml`, créez un `Secret` :  
+    * nommé `shop-database`  
+    * contenant la clé `POSTGRES_PASSWORD` avec la valeur `shop`  
+
+3) Dans le fichier `database.yaml` et créez un `StatefulSet` :  
     * nommé `shop-database`  
     * comportant le label `app: shop-database`  
     * utilisant le `Service` headless `shop-database`
@@ -165,14 +173,6 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
     * injectant tout le `Secret` `shop-database` en tant que variables d'environnement
     * déclarant un `PersistentVolumeClaim` nommé `postgres-data` de `1Gi` en `ReadWriteOnce`  
     * déclarant un `volumeMount` nommé `postgres-data` monté dans `/var/lib/postgresql/data` en specifiant le `subPath: postgres`  
-
-2) Dans le fichier `database.yaml`, créez une `ConfigMap` :  
-    * nommée `shop-database`  
-    * contenant la clé `POSTGRES_DB` avec la valeur `shop`  
-
-3) Dans le fichier `database.yaml`, créez un `Secret` :  
-    * nommé `shop-database`  
-    * contenant la clé `POSTGRES_PASSWORD` avec la valeur `shop`  
 
 4) Dans le fichier `database.yaml` créez un `Service` headless : 
     * nommé `shop-database`  
