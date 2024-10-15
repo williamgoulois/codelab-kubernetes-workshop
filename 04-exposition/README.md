@@ -110,7 +110,7 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
 
 3) Dans le même fichier, créez un `Ingress` :  
     * nommé `shop-ingress`  
-    * utilisant le `host` : <student-X>.devshop.codelab.dwidwi.tech (remplacer `<student-X>` par votre identifiant de participant)
+    * utilisant le `host` : \<student-X>.devshop.codelab.dwidwi.tech (remplacer `<student-X>` par votre identifiant de participant)
     * exposant en `https`
     * exposant le port `80` du `Service` nommé `shop-frontend` sur le chemin `/`  
     * exposant le port `8080` du `Service` nommé `shop-backend` sur le chemin `/api`  
