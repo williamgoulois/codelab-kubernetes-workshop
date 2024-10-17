@@ -1,48 +1,48 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: shop-database
+  name: shop-database-configmap
 data:
   POSTGRES_DB: "shop"
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: shop-database
+  name: shop-database-secret
 stringData:
   POSTGRES_PASSWORD: "postgres"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: shop-database
+  name: shop-database-service
   labels:
-    app: shop-database
+    app: shop-database-label
 spec:
   ports:
     - port: 5432
       targetPort: 5432
   clusterIP: None
   selector:
-    app: shop-database
+    app: shop-database-label
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: shop-database
+  name: shop-database-statefulset
 spec:
   selector:
     matchLabels:
-      app: shop-database
-  serviceName: shop-database
+      app: shop-database-label
+  serviceName: shop-database-service
   template:
     metadata:
       labels:
-        app: shop-database
+        app: shop-database-label
     spec:
       containers:
         - name: shop-database
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:1.1.0
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:latest
           resources:
             requests:
               memory: "64Mi"
@@ -54,9 +54,9 @@ spec:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: shop-database
+                name: shop-database-configmap
             - secretRef:
-                name: shop-database
+                name: shop-database-secret
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data

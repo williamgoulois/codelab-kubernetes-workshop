@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shop-backend
+  name: shop-backend-service
 spec:
   type: ClusterIP
   selector:
-    app: shop-backend
+    app: shop-backend-label
   ports:
   - port: 8080
     targetPort: 8080
@@ -13,11 +13,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: shop-frontend
+  name: shop-frontend-service
 spec:
   type: ClusterIP
   selector:
-    app: shop-frontend
+    app: shop-frontend-label
   ports:
   - port: 80
     targetPort: 80
@@ -25,7 +25,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: shop
+  name: shop-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -34,7 +34,7 @@ spec:
   tls:
   - hosts:
     - <student-X>.devshop.codelab.dwidwi.tech
-    secretName: tls
+    secretName: tls-secret
   rules:
     - host: <student-X>.devshop.codelab.dwidwi.tech
       http:
@@ -43,13 +43,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: shop-frontend
+                name: shop-frontend-service
                 port:
                   number: 80
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: shop-backend
+                name: shop-backend-service
                 port:
                   number: 8080

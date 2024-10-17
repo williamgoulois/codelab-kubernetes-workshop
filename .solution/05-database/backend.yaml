@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shop-backend
+  name: shop-backend-deployment
 spec:
   selector:
     matchLabels:
-      app: shop-backend
+      app: shop-backend-label
   replicas: 3
   template:
     metadata:
       labels:
-        app: shop-backend
+        app: shop-backend-label
     spec:
       containers:
-        - name: shop-backend
+        - name: shop-backend-container
           image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:database
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_R2DBC_URL
-              value: r2dbc:postgresql://shop-database:5432/shop
+              value: r2dbc:postgresql://shop-database-service:5432/shop
             - name: SPRING_R2DBC_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: shop-database
+                  name: shop-database-secret
                   key: POSTGRES_PASSWORD
           resources:
             requests:
