@@ -52,7 +52,7 @@ Les `releases` Helm permettent de gérer l'atomicité de la solution et offrent 
 
 Les `charts` Helm peuvent déployés depuis un dossier ou être stockés dans un `repository` Helm pour être partagés et réutilisés.  
 
-## Cheat Sheet
+## Cheat Sheet 📋
 
 **Ajout d'un repository Helm**
 ```bash
@@ -79,7 +79,7 @@ helm upgrade --install --values values.yaml <release-name> <repo-dir>
 helm list
 ```
 
-## Pratique
+## Pratique 👷
 
 1) Explorer le dossier `07-helm/chart/shop-app`
   * `Chart.yaml` : informations sur le `Chart`
