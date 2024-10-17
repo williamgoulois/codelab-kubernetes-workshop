@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../00-intro/README.md)**
 
-## Contexte
+## Contexte 📖
 
 J'ai préparé une image de conteneur pour le backend de mon application ! Et si on commençait par là ?  
 
@@ -8,7 +8,7 @@ Déployons un premier `Pod` dans le `namespace`.
 
 ![Schéma de l'etape 1](../assets/schema-kube-codelab-etape-1.png)
 
-## Concept
+## Concept 🎨
 
 Un `Pod` est le plus petit objet que vous pouvez créer dans Kubernetes. Il a pour objectif d'exécuter les images de conteneurs correspondant aux composants de votre application.  
 
@@ -43,7 +43,7 @@ La section `spec` permet de définir les conteneurs à exécuter dans le `Pod`. 
     * section `requests` (fortement recommandé) : Permet la définition de la quantité nominale de ressources que le conteneur utilise. Ces valeurs permettent à Kubernetes de décider du noeud sur lequel placer le pod.
   * `ports` : ports exposés par le conteneur
 
-## Cheat Sheet
+## Cheat Sheet 📋
 
 Astuce : taper `Pod` dans un fichier `.yaml` sur dans VS Code permet de récupérer un template.
 
@@ -51,7 +51,7 @@ Astuce : taper `Pod` dans un fichier `.yaml` sur dans VS Code permet de récupé
 
 ![Pod Helper 2](../assets/pod-helper-vscode-2.png)
 
-## Pratique
+## Pratique 👷
 
 1) Créez un fichier `pod-backend.yaml` et créez un `Pod` : 
     * dans votre `namespace` (ex: `student-XX`)  

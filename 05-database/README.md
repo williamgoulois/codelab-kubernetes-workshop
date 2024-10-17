@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../04-exposition/README.md)**
 
-## Contexte
+## Contexte 📖
 
 C'est super j'ai un site vitrine de déployé mais maintenant je veux utiliser ma base de données !  
 
@@ -16,7 +16,7 @@ On va également avoir besoin de gérer la configuration et le lien entre le bac
 
 ![Schéma de l'etape 4](../assets/schema-kube-codelab-etape-4.png)
 
-## Concepts
+## Concepts 🎨
 
 Un `StatefulSet` est un objet Kubernetes qui permet de gérer un ensemble de `Pods` avec un ordre de déploiement et un nommage unique à travers les redéploiements.  
 Il permet de gérer le stockage persistant des données avec des `PersistentVolumeClaims` et des `PersistentVolumes`.  
@@ -141,7 +141,7 @@ spec:
         secretName: secret-3
 ```
 
-## Cheat Sheet
+## Cheat Sheet 📋
 
 Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de récupérer un template.
 
@@ -149,7 +149,7 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
 
 ![StatefulSet Helper 2](../assets/statefulset-helper-vscode-2.png)
 
-## Pratique
+## Pratique 👷
 
 1) Créer un fichier `database.yaml`, créez une `ConfigMap` :  
     * nommée `shop-database`  

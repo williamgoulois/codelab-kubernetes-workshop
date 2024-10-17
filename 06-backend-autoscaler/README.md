@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../05-database/README.md)**
 
-## Contexte
+## Contexte 📖
 
 Avec Halloween qui arrive, mon appli va subir une charge de dingue !  
 
@@ -10,7 +10,7 @@ Utilisons un `HorizontalPodAutoscaler` pour gérer ça !
 
 ![Schéma de l'etape 5](../assets/schema-kube-codelab-etape-5.png)
 
-## Concept
+## Concept 🎨
 
 Un `HorizontalPodAutoscaler` est un objet Kubernetes qui permet de gérer le nombre de `Pods` en fonction de l'usage de ressources (CPU ou mémoire) des `Pods`.  
 Il permet de définir des règles de mise à l'échelle automatique pour faire varier le nombre de `Pods` entre un minimum et un maximum en fonction de la charge.  
@@ -44,7 +44,7 @@ La section `spec` permet de définir les caractéristiques du `HorizontalPodAuto
   * `maxReplicas` : nombre maximum de `Pods`
   * `metrics` : permet de définir les métriques à utiliser pour la mise à l'échelle automatique
 
-## Cheat Sheet
+## Cheat Sheet 📋
 
 Astuce : taper `HorizontalPodAutoscaler` dans un fichier `.yaml` sur dans VS Code permet de récupérer un template.
 
@@ -52,7 +52,7 @@ Astuce : taper `HorizontalPodAutoscaler` dans un fichier `.yaml` sur dans VS Cod
 
 ![HorizontalPodAutoscaler Helper 2](../assets/hpa-helper-vscode-2.png)
 
-## Pratique
+## Pratique 👷
 
 1) Créez un fichier `hpa-backend.yaml` et créez un `HorizontalPodAutoscaler` : 
     * nommé `shop-backend`  

@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../README.md)**
 
-## Contexte
+## Contexte 📖
 
 J'ai une super idée de produit à lancer ! La boutique des horreurs vestimentaires ! Avec Halloween qui approche ça va faire un carton !  
 
@@ -47,7 +47,7 @@ kubectl get deployments
 kubectl logs <pod-name>
 ```
 
-## Pratique
+## Pratique 👷
 
 Récupérer son numéro de participant si pas déjà fourni par les speakers
 

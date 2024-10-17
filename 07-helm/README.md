@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../06-backend-autoscaler/README.md)**
 
-## Contexte
+## Contexte 📖
 
 Ça fait quand même beaucoup de fichiers yaml à maintenir en cohérence...  
 
@@ -8,7 +8,7 @@ J'ai entendu parler de `Helm` en conférence technique l'autre jour, est-ce que 
 
 Mettons en place un `Chart Helm` pour déployer notre application ! 🚀  
 
-## Concept
+## Concept 🎨
 
 `Helm` est un outil qui permet de gérer des `Charts` pour déployer des applications sur Kubernetes.  
 C'est un package manager pour Kubernetes.  

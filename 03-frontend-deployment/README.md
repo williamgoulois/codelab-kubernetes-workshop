@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../02-backend-deployment/README.md)**
 
-## Contexte
+## Contexte 📖
 
 Le backend, c'est bien, mais il faut bien un frontend pour que les utilisateurs puissent acheter nos produits et nous rendre riche !  
 
@@ -10,7 +10,7 @@ Déployons notre frontend avec un second `Deployment` !
 
 ![Schéma de l'etape 3](../assets/schema-kube-codelab-etape-3.png)
 
-## Pratique
+## Pratique  👷
 
 1) Créez un fichier `deploy-frontend.yaml` et créez un `Deployment` :
     * dans votre `namespace` (ex: `student-XX`)

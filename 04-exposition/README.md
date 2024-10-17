@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../03-frontend-deployment/README.md)**
 
-## Contexte
+## Contexte 📖
 
 C'est bien ton histoire mais comment j'accède à mon appli ?  
 
@@ -8,7 +8,7 @@ On va voir comment exposer les composants en interne et en externe du cluster. a
 
 ![Schéma de l'etape 3.1](../assets/schema-kube-codelab-etape-3.1.png)
 
-## Concepts
+## Concepts 🎨
 
 Un `Service` est un objet Kubernetes qui permet d'exposer un ensemble de `Pods` en interne du cluster.  
 Il se base sur un selecteur de labels pour cibler l'ensemble de pods à exposer.  
@@ -78,7 +78,7 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
       * `http.paths[].pathType` : permet de définir le type de chemin (`Prefix`, `Exact` ou `ImplementationSpecific`).    
       * `http.paths[].backend` : permet de définir le `Service` cible du routage. (nom et port)  
 
-## Cheat Sheet
+## Cheat Sheet 📋
 
 * Astuce : taper `Service` dans un fichier `.yaml` sur dans VS Code permet de récupérer un template.
 
@@ -94,7 +94,7 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
 
 * Astuce : il est possible de séparer plusieurs fragments de `yaml` dans un seul fichier en utilisant `---` comme séparateur.
 
-## Pratique
+## Pratique 👷
 
 1) Créez un fichier `exposition.yaml` et créez un `Service` :  
     * nommé `shop-backend`  

@@ -1,6 +1,6 @@
 **Si besoin de revenir en arrière [⬅️](../01-backend-pod/README.md)**
 
-## Contexte
+## Contexte 📖
 
 Mon application va avoir beaucoup de succès ! J'en suis sûr ! Il faudrait que je puisse déployer plusieurs instances de mon backend pour gérer la charge.    
 Je pourrai créer les `Pods` un par un, mais ça me semble fastidieux...  
@@ -8,7 +8,7 @@ Essayons d'utiliser un `Deployment` !
 
 ![Schéma de l'etape 2](../assets/schema-kube-codelab-etape-2.png)
 
-## Concept
+## Concept 🎨
 
 Un `Deployment` est un objet Kubernetes qui permet de gérer un ensemble de `Pods` cohérent entre eux.  
 Il permet de définir le nombre de `Pods` à exécuter, de gérer le cycle de vie des `Pods` et de gérer la mise à jour des images de conteneur plus facilement.  
@@ -51,7 +51,7 @@ La section `spec` permet de définir les caractéristiques du `Deployment` :
   * `selector` : permet de définir quels `Pods` sont gérés par le `Deployment`
   * `template` : permet de définir le template des `Pods` créés par le `Deployment`, cette section est équivalente à une définition de `Pod`
 
-## Cheat Sheet
+## Cheat Sheet 📋
 
 Astuce : taper `Deployment` dans un fichier `.yaml` sur dans VS Code permet de récupérer un template.
 
@@ -59,7 +59,7 @@ Astuce : taper `Deployment` dans un fichier `.yaml` sur dans VS Code permet de r
 
 ![Deployment Helper 2](../assets/deployment-helper-vscode-2.png)
 
-## Pratique
+## Pratique 👷
 
 1) Supprimez le `Pod` précédemment créé :  
 ```shell
