@@ -67,10 +67,9 @@ kubectl delete pod/shop-backend
 ```
 
 2) Créez un fichier `deploy-backend.yaml` et créez un `Deployment` : 
-    * dans votre `namespace` (ex: `student-XX`)  
     * nommé `shop-backend`  
     * déployant 3 `Pods`
-    * identifiés par le label `app: shop-backend`
+    * identifiés par le label `app: shop-backend-label`
     * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-backend:no-database`  
     * allouant `32Mi` de mémoire et `50m` de CPU  
     * limitant la mémoire à `128Mi` et le CPU à `100m`  

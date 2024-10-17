@@ -126,19 +126,7 @@ spec:
             secretKeyRef:
               name: secret-2
               key: MY_SECRET_KEY
-      volumeMounts:
-        - mountPath: /etc/config
-          name: configmap-volume
-        - mountPath: /etc/secret
-          name: secret-volume
       ...
-  volumes: 
-    - name: configmap-volume
-      configMap:
-        name: configmap-3
-    - name: secret-volume
-      secret:
-        secretName: secret-3
 ```
 
 ## Cheat Sheet 📋
@@ -152,33 +140,32 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
 ## Pratique 👷
 
 1) Créer un fichier `database.yaml`, créez une `ConfigMap` :  
-    * nommée `shop-database`  
+    * nommée `shop-database-configmap`  
     * contenant la clé `POSTGRES_DB` avec la valeur `shop`  
 
 2) Dans le fichier `database.yaml`, créez un `Secret` :  
-    * nommé `shop-database`  
+    * nommé `shop-database-secret`  
     * contenant la clé `POSTGRES_PASSWORD` avec la valeur `shop`  
 
-3) Dans le fichier `database.yaml` et créez un `StatefulSet` :  
+3) Dans le fichier `database.yaml` créez un `Service` headless :
+   * nommé `shop-database-service`
+   * ciblant les `Pods` identifiés par le label `app: shop-database`
+   * exposant le port `5432` du `Pod` sur le port `5432` du `Service`
+
+4) Dans le fichier `database.yaml` et créez un `StatefulSet` :  
     * nommé `shop-database`  
-    * comportant le label `app: shop-database`  
-    * utilisant le `Service` headless `shop-database`
+    * comportant le label `app: shop-database-label`  
+    * utilisant le `Service` headless `shop-database-service`
     * déployant 1 `Pod`  
-    * identifié par le label `app: shop-database`  
+    * identifié par le label `app: shop-database-label`  
     * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-database:latest`  
     * allouant `64Mi` de mémoire et `100m` de CPU  
     * limitant la mémoire à `256Mi` et le CPU à `500m`  
     * exposant le port `5432`  
-    * injectant toute la `ConfigMap` `shop-database` en tant que variables d'environnement
-    * injectant tout le `Secret` `shop-database` en tant que variables d'environnement
+    * injectant toute la `ConfigMap` `shop-database-configmap` en tant que variables d'environnement
+    * injectant tout le `Secret` `shop-database-secret` en tant que variables d'environnement
     * déclarant un `PersistentVolumeClaim` nommé `postgres-data` de `1Gi` en `ReadWriteOnce`  
-    * déclarant un `volumeMount` nommé `postgres-data` monté dans `/var/lib/postgresql/data` en specifiant le `subPath: postgres`  
-
-4) Dans le fichier `database.yaml` créez un `Service` headless : 
-    * nommé `shop-database`  
-    * ciblant les `Pods` identifiés par le label `app: shop-database`  
-    * exposant le port `5432` du `Pod` sur le port `5432` du `Service`
-
+    * déclarant un `volumeMount` nommé `postgres-data` monté dans `/var/lib/postgresql/data` en spécifiant le `subPath: postgres`  
 
 5) Déployez la base de données 
 ```shell

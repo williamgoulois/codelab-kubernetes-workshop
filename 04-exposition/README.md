@@ -101,14 +101,14 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
 ## Pratique 👷
 
 1) Créez un fichier `exposition.yaml` et créez un `Service` :  
-    * nommé `shop-backend`  
-    * ciblant les `Pods` identifiés par le label `app: shop-backend`  
+    * nommé `shop-backend-service`  
+    * ciblant les `Pods` identifiés par le label `app: shop-backend-label`  
     * exposant le port `8080` du `Pod` sur le port `8080` du `Service`
 
 
 2) Dans le même fichier, créez un deuxième `Service` :  
-    * nommé `shop-frontend`  
-    * ciblant les `Pods` identifiés par le label `app: shop-frontend`  
+    * nommé `shop-frontend-service`  
+    * ciblant les `Pods` identifiés par le label `app: shop-frontend-label`  
     * exposant le port `80` du `Pod` sur le port `80` du `Service`
 
 
@@ -116,8 +116,8 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
     * nommé `shop-ingress`  
     * utilisant le `host` : \<student-X>.devshop.codelab.dwidwi.tech (remplacer `<student-X>` par votre identifiant de participant)
     * exposant en `https`
-    * exposant le port `80` du `Service` nommé `shop-frontend` sur le chemin `/`  
-    * exposant le port `8080` du `Service` nommé `shop-backend` sur le chemin `/api`  
+    * exposant le port `80` du `Service` nommé `shop-frontend-service` sur le chemin `/`  
+    * exposant le port `8080` du `Service` nommé `shop-backend-service` sur le chemin `/api`  
 
 
 4) Déployer les `Services` et l'`Ingress`

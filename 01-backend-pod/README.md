@@ -56,7 +56,7 @@ Astuce : taper `Pod` dans un fichier `.yaml` sur dans VS Code permet de récupé
 1) Créez un fichier `pod-backend.yaml` et créez un `Pod` : 
     * dans votre `namespace` (ex: `student-XX`)  
     * nommé `shop-backend`  
-    * comportant le label `app: shop-backend`  
+    * comportant le label `app: shop-backend-label`  
     * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-backend:no-database`  
     * allouant `32Mi` de mémoire et `50m` de CPU  
     * limitant la mémoire à `128Mi` et le CPU à `100m`  

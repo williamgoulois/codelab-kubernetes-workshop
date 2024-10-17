@@ -55,7 +55,7 @@ Astuce : taper `HorizontalPodAutoscaler` dans un fichier `.yaml` sur dans VS Cod
 ## Pratique 👷
 
 1) Créez un fichier `hpa-backend.yaml` et créez un `HorizontalPodAutoscaler` : 
-    * nommé `shop-backend`  
+    * nommé `shop-backend-hpa`  
     * ciblant le `Deployment` `shop-backend`  
     * avec un minimum de 3 `Pod` et un maximum de 10 `Pods`  
     * utilisant l'usage CPU avec une moyenne d'utilisation de 50%
@@ -72,7 +72,7 @@ kubectl get hpa
 
 4) Pour simuler une charge, ouvrez un nouveau terminal et exécutez un `loader` sur le backend
 ```shell
-kubectl run oha-loader -i --tty --rm --image=registry.gitlab.com/codelab-kubernetes/workshop:oha --restart=Never -- -z 60s -c 100 http://shop-backend:8080/api/products
+kubectl run oha-loader -i --tty --rm --image=registry.gitlab.com/codelab-kubernetes/workshop:oha --restart=Never -- -z 60s -c 100 http://shop-backend-service:8080/api/products
 ```
 
 5) Dans le premier terminal, vérifier que le nombre de `Pods` augmente 

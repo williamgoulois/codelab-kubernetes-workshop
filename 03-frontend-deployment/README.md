@@ -13,10 +13,9 @@ Déployons notre frontend avec un second `Deployment` !
 ## Pratique  👷
 
 1) Créez un fichier `deploy-frontend.yaml` et créez un `Deployment` :
-    * dans votre `namespace` (ex: `student-XX`)
     * nommé `shop-frontend`
     * déployant 1 `Pod`
-    * identifiés par le label `app: shop-frontend`
+    * identifiés par le label `app: shop-frontend-label`
     * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:latest`
     * allouant `32Mi` de mémoire et `50m` de CPU
     * limitant la mémoire à `128Mi` et le CPU à `100m`
