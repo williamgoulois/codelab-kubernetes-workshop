@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shop-backend-deployment
+  name: shop-backend
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
         app: shop-backend-label
     spec:
       containers:
-        - name: shop-backend-container
+        - name: shop-backend
           image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:no-database
           ports:
             - containerPort: 8080

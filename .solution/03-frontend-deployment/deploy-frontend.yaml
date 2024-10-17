@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shop-frontend-deployment
+  name: shop-frontend
 spec:
   selector:
     matchLabels:
@@ -12,7 +12,7 @@ spec:
         app: shop-frontend-label
     spec:
       containers:
-        - name: shop-frontend-container
+        - name: shop-frontend
           image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:latest
           ports:
             - containerPort: 80
