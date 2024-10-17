@@ -30,7 +30,11 @@ spec:
 
 La section `metadata` permet de définir le nom du `Service`.  
 La section `spec` permet de définir les caractéristiques du `Service` :  
-  * `type` : type d'exposition du service (`ClusterIP`, `NodePort`, `LoadBalancer` ou ExternalName`, par défaut `ClusterIP`).  
+  * `type` : type d'exposition du service  
+    * `ClusterIP` : expose le `Service` en interne du cluster, c'est le type par défaut et le plus utilisé.  
+    * `NodePort` : expose le `Service` sur un port fixe de chaque noeud du cluster, difficile à utiliser et maintenir.  
+    * `LoadBalancer` : expose le `Service` sur un port fixe et provisionne un `LoadBalancer` externe, dépend de l'implémentation du cluster Kubernetes sous-jacent.  
+    * `ExternalName` : permet de matérialiser une URL externe vers un `Service`.  
   * `selector` : permet de définir quels `Pods` sont gérés par le `Service`.  
   * `ports` : permet de définir les ports exposés par le `Service` et le port-forwarding entre les `Pods` et le `Service`.  
     * `port` : port du `Service`.  
