@@ -86,7 +86,7 @@ helm list
   * `values.yaml` : configurations par défaut pour les templates
   * dossier `templates/` : contient les templates `yaml`
 
-2) Modifier le fichier `07-helm/chart/shop-app/values.yaml` pour changer le hostname de l'ingress
+2) Modifier le fichier `07-helm/chart/shop-app/values.yaml` pour changer le hostname de l'ingress (remplacer `<student-X>` par votre identifiant de participant)
 
 3) Supprimer les anciennes ressources créées
 ```shell

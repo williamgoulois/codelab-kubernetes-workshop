@@ -143,16 +143,26 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
     * nommée `shop-database-configmap`  
     * contenant la clé `POSTGRES_DB` avec la valeur `shop`  
 
-2) Dans le fichier `database.yaml`, créez un `Secret` :  
+2) Vérifier la bonne présence de la clé `POSTGRES_DB` et sa valeur `shop` dans la ConfigMap `shop-database-configmap`  
+``` sh
+kubectl get configmap shop-database-configmap  -o jsonpath="{.data.POSTGRES_DB}"
+```
+
+3) Dans le fichier `database.yaml`, créez un `Secret` :  
     * nommé `shop-database-secret`  
     * contenant la clé `POSTGRES_PASSWORD` avec la valeur `shop`  
 
-3) Dans le fichier `database.yaml` créez un `Service` headless :
+4) Vérifier la bonne présence de la clé `POSTGRES_PASSWORD` et sa valeur `shop` dans la ConfigMap `shop-database-secret`  
+``` sh
+kubectl get secret shop-database-secret  -o jsonpath="{.data.POSTGRES_PASSWORD}" | base64 -d
+```
+
+5) Dans le fichier `database.yaml` créez un `Service` headless :
    * nommé `shop-database-service`
    * ciblant les `Pods` identifiés par le label `app: shop-database`
    * exposant le port `5432` du `Pod` sur le port `5432` du `Service`
 
-4) Dans le fichier `database.yaml` et créez un `StatefulSet` :  
+6) Dans le fichier `database.yaml` et créez un `StatefulSet` :  
     * nommé `shop-database`  
     * comportant le label `app: shop-database-label`  
     * utilisant le `Service` headless `shop-database-service`
@@ -167,18 +177,23 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
     * déclarant un `PersistentVolumeClaim` nommé `postgres-data` de `1Gi` en `ReadWriteOnce`  
     * déclarant un `volumeMount` nommé `postgres-data` monté dans `/var/lib/postgresql/data` en spécifiant le `subPath: postgres`  
 
-5) Déployez la base de données 
+7) Déployez la base de données 
 ```shell
 kubectl apply -f database.yaml
 ```
 
-6) Vérifiez le statut des ressources déployées
+8) Vérifiez le statut des ressources déployées
 ```shell
 kubectl get statefulsets
 kubectl get pods
 kubectl get svc
 kubectl get pvc
 kubectl logs shop-database-0
+```
+
+9) Vérifiez la bonne présence des données en base
+``` shell
+kubectl exec shop-database-0 -- psql -U postgres -d shop -c "SELECT COUNT(*) FROM PRODUCTS;"
 ```
 
 7) Reprennez votre précédente déclaration du `Deployment` `shop-backend` dans un fichier `backend.yaml`

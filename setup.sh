@@ -7,7 +7,7 @@ fi
 
 echo "✨ Retrieving kubeconfig..."
 mkdir -p "${HOME}/.kube"
-curl --fail-with-body --user "devfest-nantes-2024:${PACKAGE_REGISTRY_PASSWORD}" "https://gitlab.com/api/v4/projects/61919198/packages/generic/devfest-nantes/20241017/kubeconfig.yml" --output "${HOME}/.kube/config"
+curl --fail-with-body --user "devoxx-france-2025:${PACKAGE_REGISTRY_PASSWORD}" "https://gitlab.com/api/v4/projects/61919198/packages/generic/devoxx-france/20250416/kubeconfig.yml" --output "${HOME}/.kube/config"
 if [ $? -ne 0 ]; then
   echo "❌ Error when retrieving kubeconfig, is the password correct ?"
   exit 1
