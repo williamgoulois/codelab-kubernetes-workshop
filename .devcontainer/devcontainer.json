@@ -1,5 +1,13 @@
 {
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {
        "ghcr.io/devcontainers-extra/features/kubectx-kubens:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-kubernetes-tools.vscode-kubernetes-tools"
+            ]
+        }
     }
 }
