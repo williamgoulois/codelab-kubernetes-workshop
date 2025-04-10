@@ -1,1 +1,6 @@
-{"image":"registry.gitlab.com/codelab-kubernetes/workshop:codespace-workspace"}
+{
+    "features": {
+       "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+       "ghcr.io/devcontainers-extra/features/kubectx-kubens:1": {}
+    }
+}
