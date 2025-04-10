@@ -2,7 +2,7 @@
 
 ## Contexte 📖
 
-J'ai une super idée de produit à lancer ! La boutique des horreurs vestimentaires ! Avec Halloween qui approche ça va faire un carton !  
+J'ai une super idée de produit à lancer ! La boutique pour toutes vos aventures ! Avec le nombre d'aventurier.e.s sur le salon, ça va faire fureur !  
 
 J'ai développé mon application et préparé des images de conteneur pour les différents composants : `shop-frontend`, `shop-backend` et `shop-database`
 
