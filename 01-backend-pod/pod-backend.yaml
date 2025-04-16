@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shop-backend
+  labels:
+    app: shop-backend
+spec:
+  containers:
+    - name: shop-backend
+      image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:no-database
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+        requests:
+          memory: "32Mi"
+          cpu: "50m"
+      ports:
+        - containerPort: 8080
